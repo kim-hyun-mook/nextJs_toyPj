@@ -11,7 +11,7 @@ export const useFetchPostById = (id: string) => {
     ["post", id],
     () => fetchPostById(id),
     {
-      enabled: !!id, // Only fetch if id exists
+      enabled: !!id,
     }
   );
 };

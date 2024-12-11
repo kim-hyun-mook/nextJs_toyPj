@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useFetchPosts } from './hooks/useFetchPosts';
+import { useSyncPosts } from './hooks/useSyncPosts';
 import usePostStore from './store/zustand';
 import { ListStyle, Title } from './styles/ListDetailStyles';
 import Button from './components/Button';
-import { useSyncPosts } from './hooks/useSyncPosts';
 
 export default function PostListPage() {
   const { data: posts, isLoading, error } = useFetchPosts();
