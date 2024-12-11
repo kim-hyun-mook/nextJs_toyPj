@@ -10,10 +10,7 @@ export const useSyncPosts = (posts: Post[] | undefined) => {
       setPostList(posts);
     }
   }, [posts, setPostList]);
-
-  
 };
-
 
 export const useSyncSelectedPost = (post: Post | undefined, postList: Post[], id: string | undefined) => {
     const setSelectedPost = usePostStore((state) => state.setSelectedPost);
