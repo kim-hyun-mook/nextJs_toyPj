@@ -48,10 +48,9 @@ export const ListStyle = styled.ul`
 
 // 게시글 상세 스타일
 export const DetailStyle = styled.div`
-  border: solid 1px #e1e1e1;
   border-radius: 4px;
   padding: 10px 20px;
-  & > h1 {
+  & > h2 {
     font-size: 16px;
     margin-bottom: 10px;
     text-align: left;
@@ -59,12 +58,24 @@ export const DetailStyle = styled.div`
   & > p {
     font-size: 14px;
     text-align: left;
+    margin-bottom: 10px;
+  }
+
+  & > p > span {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 5px;
   }
 `;
-
 
 export const Title = styled.h1`
 font-size: 24px;
 text-align: center;
 padding: 20px;
-`
+`;
+
+export const DetailTitle= styled.h1`
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 20px 40px 20px;
+`;

@@ -1,21 +1,21 @@
-// app/post/page.tsx
-'use client'; // 클라이언트 컴포넌트
+'use client';
 
 import { useRouter } from 'next/navigation';
-
+import usePostStore from '../store/zustand';
 export default function PostList() {
   const router = useRouter();
+  const postList = usePostStore((state) => state.postList);
 
-  const posts = [
-    { id: 1, title: 'First Post' },
-    { id: 2, title: 'Second Post' },
-  ];
+  
+  if (postList.length === 0) {
+    return <div>Loading posts...</div>;
+  }
 
   return (
     <div>
       <h2>Post List</h2>
       <ul>
-        {posts.map((post) => (
+        {postList.map((post) => (
           <li key={post.id}>
             <span>{post.title}</span>
             <button onClick={() => router.push(`/post/${post.id}`)}>

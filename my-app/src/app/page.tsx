@@ -1,27 +1,23 @@
 'use client';
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useFetchPosts } from "./hooks/useFetchPosts";
+import { useRouter } from 'next/navigation';
+import { useFetchPosts } from './hooks/useFetchPosts';
 import usePostStore from './store/zustand';
 import { ListStyle, Title } from './styles/ListDetailStyles';
 import Button from './components/Button';
+import { useSyncPosts } from './hooks/useSyncPosts';
 
 export default function PostListPage() {
   const { data: posts, isLoading, error } = useFetchPosts();
   const postList = usePostStore((state) => state.postList);
-  const setPostList = usePostStore((state) => state.setPostList);
   const deletePost = usePostStore((state) => state.deletePost);
   const router = useRouter();
 
-  useEffect(() => {
-    if (posts) {
-      setPostList(posts);
-    }
-  }, [posts, setPostList]);
+ 
+  useSyncPosts(posts);
 
   const handleDelete = (id: number) => {
-    console.log("Deleting post with ID:", id);
+    console.log('Deleting post with ID:', id);
     deletePost(id);
   };
 
@@ -33,7 +29,7 @@ export default function PostListPage() {
     return <p>Error fetching posts.</p>;
   }
 
-  console.log("Rendered Post List:", postList);
+  console.log('Rendered Post List:', postList);
 
   return (
     <div>
